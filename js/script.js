@@ -3,6 +3,10 @@ function loadData() {
 }
 
 function googleMapImage() {
+  /**
+   * Generate url google map and set it as background
+   * @type {string}
+   */
   // Define Google map url
   var gMapUrl =
     'http://maps.googleapis.com/maps/api/streetview?size=1000x1000&location=';
