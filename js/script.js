@@ -1,5 +1,6 @@
 (function () {
   var re = /[a-zA-Zа-яА-Я0-9]+/g;
+  var apiKey = 'ee4960d0070243fbbbb312c5e6ee3269';
 
   function prepareAddress(q) {
     /**
@@ -13,8 +14,8 @@
   }
 
   function getArticles(q, func) {
+
     var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json?";
-    var apiKey = 'ee4960d0070243fbbbb312c5e6ee3269';
     var link = url + 'api-key=' + apiKey + '&q=' + q;
     $.getJSON(link, func);
   }
