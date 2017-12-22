@@ -4,6 +4,11 @@
 
   // Get value
   function getVal(elem) {
+    /**
+     * Get input class or id and return the input value
+     * @param elem - string
+     * @return value - string
+     */
     return $(elem).val();
   }
 
