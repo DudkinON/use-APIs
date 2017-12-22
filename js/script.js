@@ -2,6 +2,10 @@
   var re = /[a-zA-Zа-яА-Я0-9]+/g;
   var apiKey = 'ee4960d0070243fbbbb312c5e6ee3269';
 
+  // Get street and city value
+  var street = $('#street').val();
+  var city = $('#city').val();
+
   function prepareAddress(q) {
     /**
      * Gets a string and creates a new line with "+" character between words
@@ -43,10 +47,6 @@
 
     // define background image
     var img = $('#bgi');
-
-    // Get street and city value
-    var street = $('#street').val();
-    var city = $('#city').val();
 
     // Set background image
     img.attr('src', gMapUrl + street + city);
