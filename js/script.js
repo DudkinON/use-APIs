@@ -2,9 +2,16 @@
   var re = /[a-zA-Zа-яА-Я0-9]+/g;
 
   function prepareAddress(q) {
+    /**
+     * Gets a string and creates a new line with "+" character between words
+     * @param q - string
+     * @type {Array|{index: number, input: string}|*}
+     * @return string
+     */
     var query = q.match(re);
     return query.join('+');
   }
+
   function loadData() {
     /**
      * On click form button, run functions
