@@ -14,7 +14,11 @@
   }
 
   function getArticles(q, func) {
-
+    /**
+     * Async function get articles and use func to provide data
+     * @param (q: string, func: function)
+     * @type {string}
+     */
     var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json?";
     var link = url + 'api-key=' + apiKey + '&q=' + q;
     $.getJSON(link, func);
