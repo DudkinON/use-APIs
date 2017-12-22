@@ -39,6 +39,7 @@
      * On click form button, run functions
      */
     googleMapImage();
+    showArticles();
   }
 
   function googleMapImage() {
@@ -62,15 +63,33 @@
   }
 
   function showArticles() {
-    var address = prepareAddress(street + ' ' + city);
+    var address = prepareAddress(getVal('#street') + ' ' + getVal('#city'));
   // Get articles
     getArticles(address, function(data) {
       console.log(data);
       var articles = data.response.docs;
-
+      var card = '';
       for (var i = 0; i < articles.length; i++) {
-        var article = ''
+        var article = articles[i];
+        var img = '';
+        console.log(article.multimedia[0]);
+        if (article.multimedia.length > 0) {
+          img = article.multimedia[0].url;
+        }
+        card += '<div class="col-6 mb-4">\n' +
+          '        <div class="card">\n' +
+          '          <div class="image-box "\n' +
+          '               style="background-image: url(' + '//www.nytimes.com/' + img + ')">\n' +
+          '          </div>\n' +
+          '          <div class="card-body">\n' +
+          '            <h4 class="card-title">' + article.headline.main + '</h4>\n' +
+          '            <p class="card-text">' + article.snippet + '</p>\n' +
+          '            <a href="' + article.web_url + '" class="btn btn-primary" target="_blank">read</a>\n' +
+          '          </div>\n' +
+          '        </div>\n' +
+          '      </div>\n\n';
       }
+      $('#articles').html(card)
     });
   }
 
