@@ -1,4 +1,10 @@
 (function () {
+  var re = /[a-zA-Zа-яА-Я0-9]+/g;
+
+  function prepareAddress(q) {
+    var query = q.match(re);
+    return query.join('+');
+  }
   function loadData() {
     /**
      * On click form button, run functions
