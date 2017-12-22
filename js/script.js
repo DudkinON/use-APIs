@@ -2,9 +2,10 @@
   var re = /[a-zA-Zа-яА-Я0-9]+/g;
   var apiKey = 'ee4960d0070243fbbbb312c5e6ee3269';
 
-  // Get street and city value
-  var street = $('#street').val();
-  var city = $('#city').val();
+  // Get value
+  function getVal(elem) {
+    return $(elem).val();
+  }
 
   function prepareAddress(q) {
     /**
@@ -45,11 +46,27 @@
     var gMapUrl =
         'http://maps.googleapis.com/maps/api/streetview?size=1000x1000&location=';
 
+    var street = getVal('#street');
+    var city = getVal('#city');
+
     // define background image
     var img = $('#bgi');
 
     // Set background image
     img.attr('src', gMapUrl + street + city);
+  }
+
+  function showArticles() {
+    var address = prepareAddress(street + ' ' + city);
+  // Get articles
+    getArticles(address, function(data) {
+      console.log(data);
+      var articles = data.response.docs;
+
+      for (var i = 0; i < articles.length; i++) {
+        var article = ''
+      }
+    });
   }
 
   $('#submit-btn').on('click', loadData);
